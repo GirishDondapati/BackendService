@@ -74,11 +74,11 @@ public class AuthController {
 	@PostMapping("/signup")
 	public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequest signupRequest)
 	{
-		if(userRepository.exitsByUsername(signupRequest.getUsername())) {
+		if(userRepository.existsByUsername(signupRequest.getUsername())) {
 			return ResponseEntity.badRequest().body(new MessageResponse("Error: username is aleady used!"));
 		}
 		
-		if(userRepository.exitsByEmail(signupRequest.getEmail())) {
+		if(userRepository.existsByEmail(signupRequest.getEmail())) {
 			return ResponseEntity.badRequest().body(new MessageResponse("Error: Email is aleady used!"));
 		}
 		
